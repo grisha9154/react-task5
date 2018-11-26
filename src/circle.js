@@ -7,7 +7,6 @@ export default class Circle {
         this.element.addEventListener('mousedown',  this.onMouseDownHandler.bind(this), true);
         this.element.addEventListener('mouseup', this.onMouseUpHandler.bind(this), true);
         document.addEventListener('mousemove', this.onMouseMoveHandler.bind(this), true);
-        
         body.appendChild(this.element);
     }
 
@@ -18,14 +17,13 @@ export default class Circle {
         }
     }
 
-
     onMouseDownHandler(e) {
-            this.isActive = true;
-            this.offset = [
-                this.element.offsetLeft - e.clientX,
-                this.element.offsetTop - e.clientY
-            ];
-        }
+        this.isActive = true;
+        this.offset = [
+            this.element.offsetLeft - e.clientX,
+            this.element.offsetTop - e.clientY
+        ];
+    }
 
     onMouseUpHandler () {
         this.isActive = false;
@@ -33,14 +31,13 @@ export default class Circle {
 
     onMouseMoveHandler(e) {
         e.preventDefault();
-            if (this.isActive) {
-               let mousePosition = {
-                    x : e.clientX,
-                    y : e.clientY
-                };
-
-                this.element.style.left = (mousePosition.x + this.offset[0]) + 'px';
-                this.element.style.top  = (mousePosition.y + this.offset[1]) + 'px';
-            }
+        if (this.isActive) {
+           let mousePosition = {
+                x : e.clientX,
+                y : e.clientY
+            };
+        this.element.style.left = (mousePosition.x + this.offset[0]) + 'px';
+            this.element.style.top  = (mousePosition.y + this.offset[1]) + 'px';
+        }
     }
 }

@@ -10,13 +10,11 @@ import resizeImage from './src/resize-image.js';
     mainCntx.drawImage(image.imageObject, 0, 0, 600, 600);
     const circle = new Circle();
     const cropButton = document.getElementById("cropButton");
-    const img = new Image(300, 300);
-    document.getElementsByTagName('body')[0].appendChild(img);
-
+    const imgElement = new Image(300, 300);
+    document.getElementsByTagName('body')[0].appendChild(imgElement);
 
     cropButton.onclick = async () => {
         const dataUrl = await resizeImage(mainCanvas.toDataURL(),circle);
-        img.src = dataUrl;
+        imgElement.src = dataUrl;
     };
-
 })();
